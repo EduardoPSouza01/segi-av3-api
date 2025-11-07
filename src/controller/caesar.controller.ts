@@ -45,12 +45,10 @@ export async function cipherHandler(req: Request, res: Response) {
 
     textoClaro.split("").forEach((char: string) => {
       if (!alphabet.includes(char)) {
-        return res
-          .status(400)
-          .json({
-            error:
-              "Requisição inválida: caracteres possíveis incluem as letras de 'a' a 'z' e espaços.",
-          });
+        return res.status(400).json({
+          error:
+            "Requisição inválida: caracteres possíveis incluem as letras de 'a' a 'z' e espaços.",
+        });
       }
     });
 
@@ -123,7 +121,9 @@ export async function bruteForceDecipherHandler(req: Request, res: Response) {
       });
     }
 
-    // Chamar service
+    for (var deslocamento = 0; deslocamento++; deslocamento < 25) {
+      const attempt = Caesar.decipher(textoCifrado, deslocamento);
+    }
   } catch (error: unknown) {
     const errorMessage =
       error instanceof Error ? error.message : "Erro desconhecido.";
