@@ -27,6 +27,10 @@ const alphabet = [
   "z",
 ];
 
+function positiveModulo(dividend: number, divisor: number): number {
+  return ((dividend % divisor) + divisor) % divisor;
+}
+
 export const cipher = (textoClaro: string, deslocamento: number): string => {
   const textoCifrado = textoClaro
     .split("")
@@ -34,7 +38,7 @@ export const cipher = (textoClaro: string, deslocamento: number): string => {
       if (char == " ") return " ";
 
       const indexInAlphabet = alphabet.indexOf(char);
-      const newIndex = (indexInAlphabet + deslocamento) % 26;
+      const newIndex = positiveModulo(indexInAlphabet + deslocamento, 26);
       const newLetter = alphabet[newIndex];
 
       return newLetter;
@@ -54,7 +58,7 @@ export const decipher = (
       if (char == " ") return " ";
 
       const indexInAlphabet = alphabet.indexOf(char);
-      const newIndex = (indexInAlphabet - deslocamento) % 26;
+      const newIndex = positiveModulo(indexInAlphabet - deslocamento, 26);
       const newLetter = alphabet[newIndex];
 
       return newLetter;

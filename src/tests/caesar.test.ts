@@ -1,7 +1,5 @@
 import { cipher, decipher } from "../services/caesar.services";
 
-console.log(cipher("duduzinho seguranca info", 25));
+console.log(cipher("hello world", 3));
 
-console.log(decipher("ctctyhmgn rdftqzmbz hmen", 25));
-
-console.log(31 % 26);
+console.log(decipher("khoor zruog", 3));
